@@ -1,6 +1,6 @@
 # taxispringbootkafka
 
-This is Spring Boot rest api application to receive geolocation data from taxis, process the data, write it into Kafka topics:
+This is Spring Boot rest api application receives geolocation data from taxis, process the data, write it into Kafka topics:
 - Contains docker.compose.yml file to set up in Docker a Kafka cluster with 2 kafka servers and 2 zookeeper servers.
 - Exposes 2 rest api endpoints:
   - "/": to test the controller and, to ease testing purposes, displays a html form to send data to second endpoint
