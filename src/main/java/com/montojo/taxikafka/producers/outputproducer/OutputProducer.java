@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class OutputProducer {
     @Autowired
-//    @Qualifier("outputKafkaTemplate")
     private final KafkaTemplate<String, TaxiDistance> kafkaTemplate;
 
     @Value("${kafka.topic.taxidistance.output.name}")

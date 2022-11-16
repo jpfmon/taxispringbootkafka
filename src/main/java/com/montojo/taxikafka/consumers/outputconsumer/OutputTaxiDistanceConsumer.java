@@ -1,4 +1,4 @@
-package com.montojo.taxikafka.outputconsumer;
+package com.montojo.taxikafka.consumers.outputconsumer;
 
 import com.montojo.taxikafka.producers.outputproducer.TaxiDistance;
 import org.slf4j.Logger;
@@ -10,9 +10,9 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OutputConsumer {
+public class OutputTaxiDistanceConsumer {
 
-    private static final Logger logger = LoggerFactory.getLogger(OutputConsumer.class);
+    private static final Logger logger = LoggerFactory.getLogger(OutputTaxiDistanceConsumer.class);
 
     @KafkaListener(containerFactory = "taxiDistanceKafkaListenerContainerFactory", topics = "${kafka.topic.taxidistance.output.name}", groupId = "${kafka.topic.taxidistance.output.group}")
     public void getSignalMessagePartition0(@Payload TaxiDistance taxiDistance,

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class SignalInputProducer {
     @Autowired
-//    @Qualifier("signalKafkaTemplate")
     private final KafkaTemplate<String, Signal> kafkaTemplate;
 
     @Value("${kafka.topic.signal.input.name}")
@@ -19,6 +18,11 @@ public class SignalInputProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
+    /**
+     * Writes each taxi signal to topic, setting for key the taxiid,
+     * so all signals from one taxi go to the same partition
+     * @param signal
+     */
     public void writeSignal(Signal signal) {
         //sending Signal for each taxi messages with taxiId as key.
         kafkaTemplate.send(topic, signal.getTaxiId(), signal);

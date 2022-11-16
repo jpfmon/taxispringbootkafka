@@ -22,7 +22,7 @@ public class Signal {
         float latitude;
         float longitude;
 
-        System.out.printf("Validating latitude %s and longitude %s%n",latitudeTxt, longitudeTxt);
+//        System.out.printf("Validating latitude %s and longitude %s%n",latitudeTxt, longitudeTxt);
 
         try {
             latitude = Float.parseFloat(latitudeTxt);
