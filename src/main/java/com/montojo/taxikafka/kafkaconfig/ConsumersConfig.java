@@ -20,7 +20,7 @@ import java.util.Map;
 @EnableKafka
 public class ConsumersConfig {
 
-    @Value(value = "${spring.kafka.consumer.bootstrap-servers}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
     @Value("${kafka.topic.signal.input.group}")
