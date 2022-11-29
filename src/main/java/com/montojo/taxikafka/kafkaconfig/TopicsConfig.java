@@ -12,7 +12,7 @@ import org.springframework.kafka.config.TopicBuilder;
 public class TopicsConfig {
 
 
-    @Value(value = "${spring.kafka.producer.bootstrap-servers}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
     @Value("${kafka.topic.signal.input.name}")

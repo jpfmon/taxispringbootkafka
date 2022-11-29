@@ -2,6 +2,7 @@ package com.montojo.taxikafka.kafkaconfig;
 
 import com.montojo.taxikafka.producers.inputproducer.Signal;
 import com.montojo.taxikafka.producers.outputproducer.TaxiDistance;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +28,7 @@ public class ProducersConfig {
     public ProducerFactory<String, Signal> signalProducerFactory(){
         Map<String, Object> properties = new HashMap<>();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        properties.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG,60000);
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return  new DefaultKafkaProducerFactory<>(properties);

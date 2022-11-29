@@ -37,6 +37,8 @@ public class ConsumersConfig {
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, inputSignalConsumersGroup);
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class.getName());
+        properties.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG,60000);
+        properties.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG,10000);
         properties.put(JsonDeserializer.VALUE_DEFAULT_TYPE,"com.montojo.taxikafka.producers.inputproducer.Signal");
         properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         return new DefaultKafkaConsumerFactory<>(properties);
