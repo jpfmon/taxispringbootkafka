@@ -4,6 +4,7 @@ package com.montojo.taxikafka.distanceservice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
 import java.util.Stack;
 
 public class GeoData {
@@ -54,6 +55,27 @@ public class GeoData {
         addNewCoordinates(new Coordinates(newLatitude, newLongitude));
     }
 
+    @Override
+    public String toString() {
+        return "GeoData{" +
+                "totalDistance=" + totalDistance +
+                ", coordinatesStack=" + coordinatesStack +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GeoData geoData = (GeoData) o;
+        return Float.compare(geoData.totalDistance, totalDistance) == 0 && coordinatesStack.equals(geoData.coordinatesStack);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(totalDistance, coordinatesStack);
+    }
+
     /**
      * Calculates new total distance, updates totalDisntace instance field and stores new coordinates in Stack of coordinates
      * @param newLatitude
@@ -86,4 +108,6 @@ public class GeoData {
 
         return totalDistance;
     }
+
+
 }

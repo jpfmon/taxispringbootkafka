@@ -1,6 +1,8 @@
 package com.montojo.taxikafka.producers.inputproducer;
 
 
+import java.util.Objects;
+
 public class Signal {
 
     private String taxiId;
@@ -69,5 +71,27 @@ public class Signal {
 
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
+    }
+
+    @Override
+    public String toString() {
+        return "Signal{" +
+                "taxiId='" + taxiId + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Signal signal = (Signal) o;
+        return taxiId.equals(signal.taxiId) && latitude.equals(signal.latitude) && longitude.equals(signal.longitude);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(taxiId, latitude, longitude);
     }
 }
